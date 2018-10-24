@@ -23,7 +23,7 @@
     },
     "vmAdminPassword": {
       "type": "securestring"
-    },   
+    },
     "pipDnsName": {
       "type": "string",
       "minLength": 1
@@ -31,7 +31,7 @@
 	"nsgName": {
 	"type" : "string"
 	}
-    
+
   },
   "variables": {
     "storageAccountName": "[concat('zerto', uniqueString(resourceGroup().id))]",
@@ -49,7 +49,7 @@
     "vmStorageAccountContainerName": "vhds",
     "vmNicName": "[concat(parameters('vmName'), 'NetworkInterface')]",
     "pipName": "pip"
-    
+
 
   },
   "resources": [
@@ -160,7 +160,7 @@
           "imageReference": {
             "publisher": "zerto",
             "offer": "zerto-cloud-appliance-50",
-            "sku": "zerto55u2zca",
+            "sku": "zerto65ga",
             "version": "latest"
           },
           "osDisk": {
@@ -197,12 +197,12 @@
         }
       }
     },
-	{          
+	{
             "type": "Microsoft.Network/networkSecurityGroups",
             "name": "[parameters('nsgName')]",
             "apiVersion": "2017-06-01",
-            "location": "[resourceGroup().location]",            
-            "properties": { 
+            "location": "[resourceGroup().location]",
+            "properties": {
 					"securityRules": [
                     {
                         "name": "AllowRDP",
@@ -221,10 +221,10 @@
                             "destinationAddressPrefixes": []
                         }
                     }
-                ]			
+                ]
             }
         }
-    
+
   ],
   "outputs": {}
 }
